@@ -2,6 +2,7 @@
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
+      address: "/tmp/mpd_socket",
       password: None,
       theme: Some("stylix"),
       cache_dir: Some("/tmp/rmpc/cache"),

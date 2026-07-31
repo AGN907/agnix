@@ -7,7 +7,6 @@
         inherit (config.home) homeDirectory;
         inherit (config.lib.stylix) colors;
 
-        mpdAddress = "$XDG_RUNTIME_DIR/mpd/socket";
         rmpcConfigDir = "${homeDirectory}/majarra/config/rmpc";
         rmpcTheme = with colors.withHashtag; ''
           #![enable(implicit_some)]
@@ -198,14 +197,11 @@
         services.mpdris2-rs.enable = true;
         services.mpd = {
           enable = true;
-          network.listenAddress = mpdAddress;
+          network.listenAddress = "/tmp/mpd_socket";
           extraConfig = ''
             audio_output {
-              type "alsa"
-              name "My ALSA"
-              mixer_type		"hardware"
-              mixer_device	"default"
-              mixer_control	"PCM"
+                    type            "pipewire"
+                    name            "PipeWire Sound Server"
             }
           '';
         };
