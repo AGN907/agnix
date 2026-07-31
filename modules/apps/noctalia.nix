@@ -102,18 +102,14 @@
                 background_opacity = opacity.desktop;
                 capsule_opacity = opacity.desktop;
                 widget_spacing = 6;
-                margin_ends = 120;
+                margin_ends = 80;
                 start = [
-                  "launcher"
-                  "spacer"
-                  "workspaces"
+                  "prayer"
                   "spacer"
                   "active_window"
                 ];
                 center = [
-                  "wallpaper"
-                  "clock"
-                  "notifications"
+                  "workspaces"
                 ];
                 end = [
                   "media"
@@ -121,13 +117,16 @@
                   "tray"
                   "spacer"
                   "group:group1"
-                  "session"
+                  "spacer"
+                  "clock"
                 ];
                 capsule_group = [
                   {
                     id = "group1";
                     fill = "surface_variant";
                     members = [
+                      "wallpaper"
+                      "notifications"
                       "network"
                       "volume"
                       "keyboard_layout"
@@ -161,7 +160,8 @@
             };
             widget = {
               clock = {
-                format = "{:%H:%M} - {:%b %e %a}";
+                format = "{:%H:%M}";
+                tooltip_format = "{:%H:%M} - {:%b %e %a}";
               };
               volume = {
                 show_label = false;
@@ -174,6 +174,21 @@
               };
               keyboard_layout = {
                 show_label = false;
+              };
+              prayer = {
+                type = "ycf/mawaqit:bar";
+                showElapsed = true;
+                hidePrayerName = true;
+              };
+            };
+            plugins = {
+              enabled = [ "ycf/mawaqit" ];
+            };
+            plugin_settings = {
+              "ycf/mawaqit" = {
+                country = country;
+                city = city;
+                method = "4";
               };
             };
           };
