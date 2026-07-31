@@ -385,11 +385,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1783522502,
-        "narHash": "sha256-nFgG4gPQueCgP8LidXsdI2lYPrSwTcmDl6afcVn7F/U=",
-        "rev": "0bb7ec54c8483066ec9d7720e780a5caa71f8612",
+        "lastModified": 1784356753,
+        "narHash": "sha256-zupdTm41be2fY8cexroEOGjopl3F2Gqs3gk7ieqaM3s=",
+        "rev": "61b7c44c4073f0b827768aff0049561b5110ea5a",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1031299.0bb7ec54c848/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1036777.61b7c44c4073/nixexprs.tar.xz"
       },
       "original": {
         "type": "tarball",
@@ -513,16 +513,36 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1783907407,
-        "narHash": "sha256-plCHOcmqaPmF6MD+AIDI+XekxPFZRqqHpF47w5l8pbg=",
+        "lastModified": 1784820380,
+        "narHash": "sha256-jXz2vFHgidbyU46ScROLSuBIhsqqtyqNu2M0tmGX/FA=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "3df9dcd1e9aec49ea3cc92a13930352b7e1a4374",
+        "rev": "4c2dcd0995f9c570c0ced95561bf5e4685e2ad1b",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
+    "noctalia-greeter": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784707224,
+        "narHash": "sha256-K8yyxX/sShhVznU/3ejZgriayg8Fyac+bR4dCTB1864=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
+        "rev": "8e53bb30f1d1179c0bd2275b02915258827d62eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-greeter",
         "type": "github"
       }
     },
@@ -626,6 +646,7 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
+        "noctalia-greeter": "noctalia-greeter",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
         "plugins-tiny-code-action": "plugins-tiny-code-action",

@@ -3,15 +3,39 @@
   ...
 }:
 {
-  flake-file.inputs.noctalia.url = "github:noctalia-dev/noctalia-shell";
+  flake-file.inputs = {
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
   nawa.apps._.noctalia = {
-    nixos = {
+    nixos = { config, ... }: {
       nix.settings = {
         substituters = [ "https://noctalia.cachix.org" ];
         trusted-public-keys = [
           "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
         ];
+      };
+      imports = [
+        inputs.noctalia-greeter.nixosModules.default
+      ];
+
+      programs.noctalia-greeter = {
+        enable = true;
+        greeter-args = "--session niri";
+        settings = {
+          cursor = {
+            theme = config.stylix.cursor.name;
+            size = config.stylix.cursor.size;
+            path = "${config.stylix.cursor.package}/share/icons";
+          };
+          keyboard = {
+            layout = "us";
+          };
+        };
       };
     };
 
@@ -19,6 +43,9 @@
       { config, ... }:
       let
         inherit (config.stylix) fonts opacity;
+
+        country = "SA";
+        city = "Dammam";
       in
       {
         imports = [
@@ -36,6 +63,9 @@
               polkit_agent = true;
               panel = {
                 transparency_mode = "glass";
+              };
+              greeter_sync = {
+                auto_sync = true;
               };
               session.actions = [
                 {
@@ -120,7 +150,7 @@
               unit = "metric";
             };
             location = {
-              address = "Dammam, SA";
+              address = "${city}, ${country}";
             };
             lockscreen = {
               blurred_desktop = true;

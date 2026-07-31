@@ -25,6 +25,10 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     plugins-lze = {
       url = "github:BirdeeHub/lze";
       flake = false;
