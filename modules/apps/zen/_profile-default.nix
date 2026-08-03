@@ -1,10 +1,10 @@
 { pkgs, ... }: {
-  settings = import ./_settings.nix;
   search = import ./_search.nix { inherit pkgs; };
   mods = import ./_mods.nix;
   spaces = import ./_spaces.nix;
   spacesForce = true;
   presets.betterfox.enable = true;
+  presets.arkenfox.enable = true;
   pins = {
     "Github" = {
       id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
