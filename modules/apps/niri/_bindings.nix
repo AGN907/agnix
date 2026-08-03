@@ -19,6 +19,7 @@ in
   "Mod+B".spawn = [
     "zen-twilight"
   ];
+  "Mod+Period".spawn = [ "localsend_app" ];
   "Mod+Comma".spawn = noctalia "settings-toggle";
   "Mod+S".spawn = noctalia "panel-toggle control-center";
   "Mod+M".spawn = noctalia "panel-toggle control-center system";
