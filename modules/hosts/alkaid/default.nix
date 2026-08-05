@@ -8,7 +8,7 @@
       desktop
       # services._.paperless-ngx
       # services._.immich
-      services._.adguard-home
+      # services._.adguard-home
       services._.grimmory
     ];
 
