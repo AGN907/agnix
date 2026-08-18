@@ -17,7 +17,7 @@ in
     "wezterm"
   ];
   "Mod+B".spawn = [
-    "zen-twilight"
+    "zen-beta"
   ];
   "Mod+Period".spawn = [ "localsend_app" ];
   "Mod+Comma".spawn = noctalia "settings-toggle";

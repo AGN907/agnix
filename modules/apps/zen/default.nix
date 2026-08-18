@@ -4,7 +4,7 @@
 }:
 {
   flake-file.inputs.zen-browser = {
-    url = "github:0xc000022070/zen-browser-flake/beta";
+    url = "github:0xc000022070/zen-browser-flake";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -15,7 +15,7 @@
     }:
     {
       imports = [
-        inputs.zen-browser.homeModules.twilight
+        inputs.zen-browser.homeModules.beta
       ];
 
       stylix.targets.zen-browser = {
@@ -28,7 +28,7 @@
         setAsDefaultBrowser = true;
         enablePrivateDesktopEntry = true;
         env = {
-          GTK_THEME = "Adwaita";
+          GTK_THEME = "adw-gtk3-dark";
         };
         policies = import ./_polices.nix;
         profiles.default = import ./_profile-default.nix { inherit pkgs; };
@@ -40,7 +40,7 @@
             map
               (name: {
                 inherit name;
-                value = "zen-twilight.desktop";
+                value = "zen-beta.desktop";
               })
               [
                 "application/x-extension-shtml"

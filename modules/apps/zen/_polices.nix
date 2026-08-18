@@ -18,6 +18,11 @@ in
   SanitizeOnShutdown = {
     FormData = true;
     Cache = true;
+    Sessions = false;
+    Cookies = false;
+    History = false;
+    SiteSettings = false;
+    Locked = true;
   };
   HardwareAcceleration = true;
   ManualAppUpdateOnly = true;
