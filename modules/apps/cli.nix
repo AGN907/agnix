@@ -33,6 +33,7 @@
           gomi
           chafa
           playerctl
+          cliamp
         ];
 
         programs = {

@@ -23,9 +23,6 @@
       };
     };
     provides.to-users = {
-      includes = with nawa; [
-        apps._.rmpc
-      ];
       nixos = {
         environment.pathsToLink = [
           "/share/applications"
