@@ -37,7 +37,7 @@
       };
   };
 
-  den.aspects.flake.packages = { pkgs, lib, ... }: {
+  den.aspects.flake.packages = { pkgs, ... }: {
     nvim = (
       inputs.wrappers.lib.evalPackage {
         inherit pkgs;
@@ -45,11 +45,6 @@
           inputs.wrappers.wrapperModules.neovim
           (import ./_nix inputs)
         ];
-        _module.args.stylixColors =
-          let
-            raw = self.nixosConfigurations.alkaid.config.lib.stylix.colors.withHashtag or { };
-          in
-          lib.filterAttrs (_: v: builtins.isString v) raw;
       }
     );
   };

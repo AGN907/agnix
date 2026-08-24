@@ -93,6 +93,9 @@ end)
 
 nixInfo.lze.load({
 	{
+		"vague.nvim",
+	},
+	{
 		"trigger_colorscheme",
 		event = "VimEnter",
 		load = function()

@@ -1,14 +1,12 @@
 {
   config,
   pkgs,
-  stylixColors ? { },
   ...
 }:
 {
 
   config.info = {
-    colorscheme = "stylix";
-    colors = stylixColors;
+    colorscheme = "vague";
     nixd = rec {
       flake = "builtins.getFlake (toString /home/agn/majarra)";
       nixpkgs = "import (${flake}).inputs.nixpkgs { }";
@@ -21,7 +19,6 @@
   config.specs.general = {
     data = with pkgs.vimPlugins; [
       config.nvim-lib.neovimPlugins.lze
-      mini-base16
       mini-basics
       mini-comment
       mini-extra
@@ -32,6 +29,7 @@
       snacks-nvim
       which-key-nvim
       quicker-nvim
+      vague-nvim
       {
         data = config.nvim-lib.neovimPlugins.lzextras;
         name = "lzextras";

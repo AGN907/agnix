@@ -1,4 +1,3 @@
-local colors = nixInfo({}, "info", "colors")
 local space = "%="
 
 local hl = function(group)
@@ -10,38 +9,32 @@ local hl = function(group)
 end
 
 local set_hl_groups = function()
-	local base = hl("StatusLine")
-
 	for group, opts in pairs({
-		ModeNormal = { fg = colors.base00, bg = colors.base0D, bold = true },
-		ModePending = { fg = colors.base00, bg = hl("Comment").fg, bold = true },
-		ModeVisual = { fg = colors.base00, bg = hl("SpecialKey").fg, bold = true },
-		ModeInsert = { fg = colors.base00, bg = hl("DiffAdded").fg, bold = true },
-		ModeCommand = { fg = colors.base00, bg = hl("Number").fg, bold = true },
-		ModeReplace = { fg = colors.base00, bg = hl("Constant").fg, bold = true },
-		FileDir = { fg = colors.base04, bg = colors.base00 },
-		FileName = { fg = colors.base05, bg = colors.base00, bold = true },
-		FileModified = { fg = colors.base06, bg = colors.base00 },
-		FileReadOnly = { fg = colors.base07, bg = colors.base00 },
-		DiffAdd = { fg = hl("DiffAdd").fg, bg = colors.base00 },
-		DiffChange = { fg = hl("DiffChange").fg, bg = colors.base00 },
-		DiffDelete = { fg = hl("DiffDelete").fg, bg = colors.base00 },
-		LSP = { fg = colors.base04, bg = colors.base00 },
-		Fmt = { fg = colors.base04, bg = colors.base00 },
-		Bold = { fg = base.fg, bg = base.bg, bold = true },
-		Dim = { fg = hl("LineNr").fg, bg = base.bg },
-    Position  = { fg = colors.base06, bg = "NONE"},
-		Search = { fg = colors.base01, bg = colors.base0D },
-		Recording = { fg = colors.base0D, bg = "NONE" },
-		MiniIconsAzure = { fg = hl("MiniIconsAzure").fg, bg = colors.base00 },
-		MiniIconsBlue = { fg = hl("MiniIconsBlue").fg, bg = colors.base00 },
-		MiniIconsCyan = { fg = hl("MiniIconsCyan").fg, bg = colors.base00 },
-		MiniIconsGreen = { fg = hl("MiniIconsGreen").fg, bg = colors.base00 },
-		MiniIconsGrey = { fg = hl("MiniIconsGrey").fg, bg = colors.base00 },
-		MiniIconsOrange = { fg = hl("MiniIconsOrange").fg, bg = colors.base00 },
-		MiniIconsPurple = { fg = hl("MiniIconsPurple").fg, bg = colors.base00 },
-		MiniIconsRed = { fg = hl("MiniIconsRed").fg, bg = colors.base00 },
-		MiniIconsYellow = { fg = hl("MiniIconsYellow").fg, bg = colors.base00 },
+		ModeNormal = { link = "MiniStatuslineModeNormal" },
+		ModeInsert = { link = "MiniStatuslineModeInsert" },
+		ModeVisual = { link = "MiniStatuslineModeVisual" },
+		ModeCommand = { link = "MiniStatuslineModeCommand" },
+		ModeReplace = { link = "MiniStatuslineModeReplace" },
+		ModePending = { link = "MiniStatuslineModeOther" },
+		DiffAdded = { link = "Added" },
+		DiffChanged = { link = "Changed" },
+		DiffRemoved = { link = "Removed" },
+    FileDir = { fg = hl("Directory").fg, bg = "NONE" },
+    FileName = { fg = hl("Title").fg, bg = "NONE", bold = true },
+    FileReadOnly = { fg = hl("ErrorMsg").fg, bg = "NONE" },
+		LSP = { fg = hl("SpecialKey").fg, bg = "NONE" },
+		Fmt = { fg = hl("SpecialKey").fg, bg = "NONE" },
+		Position = { fg = hl("SpecialKey").fg, bg = "NONE", bold = true },
+		Recording = { fg = hl("Question").fg, bg = "NONE" },
+		MiniIconsAzure = { fg = hl("MiniIconsAzure").fg, bg = "NONE" },
+		MiniIconsBlue = { fg = hl("MiniIconsBlue").fg, bg = "NONE" },
+		MiniIconsCyan = { fg = hl("MiniIconsCyan").fg, bg = "NONE" },
+		MiniIconsGreen = { fg = hl("MiniIconsGreen").fg, bg = "NONE" },
+		MiniIconsGrey = { fg = hl("MiniIconsGrey").fg, bg = "NONE" },
+		MiniIconsOrange = { fg = hl("MiniIconsOrange").fg, bg = "NONE" },
+		MiniIconsPurple = { fg = hl("MiniIconsPurple").fg, bg = "NONE" },
+		MiniIconsRed = { fg = hl("MiniIconsRed").fg, bg = "NONE" },
+		MiniIconsYellow = { fg = hl("MiniIconsYellow").fg, bg = "NONE" },
 	}) do
 		group = "St" .. group
 		vim.api.nvim_set_hl(0, group, opts)
@@ -96,7 +89,7 @@ local file_name_component = function()
 	if #parts == 1 then
 		filename = parts[1]
 	else
-		filename = "/" .. parts[#parts]
+		filename = parts[#parts]
 		dir = parts[#parts - 1]
 	end
 
@@ -121,12 +114,12 @@ local diff_component = function()
 		return ""
 	end
 
-	local add, change, delete = summary.add or 0, summary.change or 0, summary.delete or 0
+	local added, changed, removed = summary.add or 0, summary.change or 0, summary.delete or 0
 
 	return table.concat({
-		"%#StDiffAdd# " .. (add > 0 and "+" .. add or "") .. " ",
-		"%#StDiffChange#" .. (change > 0 and "~" .. change or "") .. " ",
-		"%#StDiffDelete#" .. (delete > 0 and "-" .. delete or "") .. " ",
+		"%#StDiffAdded# " .. (added > 0 and "+" .. added or "") .. " ",
+		"%#StDiffChanged#" .. (changed > 0 and "~" .. changed or "") .. " ",
+		"%#StDiffRemoved#" .. (removed > 0 and "-" .. removed or "") .. " ",
 		"%#StBase#",
 	})
 end
@@ -140,9 +133,9 @@ local fmt_component = function()
 	local formatters = conform.list_formatters_for_buffer(vim.api.nvim_get_current_buf())
 
 	local fmt_name = formatters[1] or ""
-  if fmt_name == "" then
-    return ""
-  end
+	if fmt_name == "" then
+		return ""
+	end
 
 	return table.concat({
 		"%#StFmt#",
@@ -164,7 +157,7 @@ local lsp_component = function()
 	return table.concat({
 		"%#StLSP# ",
 		string.format("%s ", table.concat(client_names, ",")),
-    fmt_component() == "" and "" or "| "
+		fmt_component() == "" and "" or "| ",
 	})
 end
 
@@ -177,10 +170,10 @@ local diagnostic_status = function()
 end
 
 local function position_component()
-  return table.concat({
-    "%#StPosition#",
-    "[%P %l:%c]",
-  })
+	return table.concat({
+		"%#StPosition#",
+		"[%P %l:%c]",
+	})
 end
 
 local blink_icon = true
@@ -217,15 +210,15 @@ function _G.Statusline_active()
 		"%#StBase# ",
 		mode_component(),
 		file_name_component(),
-    diff_component(),
+		diff_component(),
 		space,
 		macro_component(),
-    space,
-    "%S",
-    diagnostic_status(),
-    lsp_component(),
-    fmt_component(),
-    position_component(),
+		space,
+		"%S",
+		diagnostic_status(),
+		lsp_component(),
+		fmt_component(),
+		position_component(),
 	})
 end
 

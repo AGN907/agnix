@@ -114,12 +114,11 @@ nixInfo.lze.load({
 
 			fzf.setup({
 				git_icons = false,
+        fzf_colors = true,
 				winopts = {
 					height = 0.90, -- window height
 					width = 0.90, -- window width
 					preview = {
-						default = "bat",
-						border = "noborder",
 						---@type 'horizontal'|'vertical'|'flex'
 						layout = "flex",
 						vertical = "up:70%", -- up|down:size -- preview goes above the list
