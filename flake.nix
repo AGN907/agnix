@@ -51,6 +51,7 @@
     };
     stylix.url = "github:nix-community/stylix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions = {
       url = "github:vicinaehq/extensions";

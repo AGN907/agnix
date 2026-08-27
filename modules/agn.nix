@@ -16,6 +16,7 @@
       <nawa/apps/wezterm>
       <nawa/apps/cli/full>
       <nawa/apps/niri>
+      <nawa/apps/umbriel>
       <nawa/apps/neovim>
       <nawa/apps/zk>
       <nawa/apps/starship>
