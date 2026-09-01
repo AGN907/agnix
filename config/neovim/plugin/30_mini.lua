@@ -212,16 +212,7 @@ nixInfo.lze.load({
 		"mini.diff",
 		event = { "BufReadPre", "BufNewFile" },
 		after = function()
-			require("mini.diff").setup({
-				view = {
-					style = "sign",
-					signs = {
-						add = "▎",
-						change = "▎",
-						delete = "",
-					},
-				},
-			})
+			require("mini.diff").setup()
 		end,
 	},
 	{
