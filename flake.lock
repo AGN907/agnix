@@ -640,6 +640,22 @@
         "type": "github"
       }
     },
+    "plugins-mini-statuscolumn": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787841213,
+        "narHash": "sha256-B5jk/0P88JXowiRF7X9V8B8lHHCdzV0rQN+R5du/cDg=",
+        "owner": "nvim-mini",
+        "repo": "mini.statuscolumn",
+        "rev": "a9cad1a7f954f81742541ad95e804b2217afd721",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-mini",
+        "repo": "mini.statuscolumn",
+        "type": "github"
+      }
+    },
     "plugins-tiny-code-action": {
       "flake": false,
       "locked": {
@@ -686,6 +702,7 @@
         "noctalia-greeter": "noctalia-greeter",
         "plugins-lze": "plugins-lze",
         "plugins-lzextras": "plugins-lzextras",
+        "plugins-mini-statuscolumn": "plugins-mini-statuscolumn",
         "plugins-tiny-code-action": "plugins-tiny-code-action",
         "plugins-zellij-vim": "plugins-zellij-vim",
         "sops-nix": "sops-nix",

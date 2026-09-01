@@ -747,4 +747,11 @@ nixInfo.lze.load({
 			})
 		end,
 	},
+	{
+		"mini-statuscolumn",
+		after = function()
+			local statuscolumn = require("mini.statuscolumn")
+			statuscolumn.setup()
+		end,
+	},
 })

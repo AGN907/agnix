@@ -19,6 +19,10 @@
       url = "github:rachartier/tiny-code-action.nvim";
       flake = false;
     };
+    plugins-mini-statuscolumn = { 
+      url = "github:nvim-mini/mini.statuscolumn";
+      flake = false;
+    };
   };
 
   nawa.apps._.neovim = {

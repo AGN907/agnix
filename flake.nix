@@ -37,6 +37,10 @@
       url = "github:BirdeeHub/lzextras";
       flake = false;
     };
+    plugins-mini-statuscolumn = {
+      url = "github:nvim-mini/mini.statuscolumn";
+      flake = false;
+    };
     plugins-tiny-code-action = {
       url = "github:rachartier/tiny-code-action.nvim";
       flake = false;

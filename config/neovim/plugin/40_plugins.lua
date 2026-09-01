@@ -7,18 +7,6 @@ nixInfo.lze.load({
 				terminal = {},
 				input = {},
 				rename = {},
-				statuscolumn = {
-					left = { "mark", "sign" },
-					right = { "git" },
-					folds = {
-						open = false,
-						git_hl = false,
-					},
-					git = {
-						patterns = { "MiniDiffSign" },
-					},
-					refresh = 50,
-				},
 				lazygit = {
 					configure = false,
 				},

@@ -112,6 +112,7 @@
       fzf-lua
       tiny-inline-diagnostic-nvim
       config.nvim-lib.neovimPlugins.tiny-code-action
+      config.nvim-lib.neovimPlugins.mini-statuscolumn
     ];
   };
 
