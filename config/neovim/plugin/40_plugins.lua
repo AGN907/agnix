@@ -101,7 +101,7 @@ nixInfo.lze.load({
 
 			fzf.setup({
 				git_icons = false,
-        fzf_colors = true,
+				fzf_colors = true,
 				winopts = {
 					height = 0.90, -- window height
 					width = 0.90, -- window width
