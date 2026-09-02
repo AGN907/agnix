@@ -21,13 +21,13 @@
       config.nvim-lib.neovimPlugins.lze
       mini-basics
       mini-comment
+      mini-clue
       mini-extra
       mini-notify
       mini-icons
       mini-input
       mini-misc
       snacks-nvim
-      which-key-nvim
       quicker-nvim
       vague-nvim
       {

@@ -15,16 +15,16 @@ nmap("]p", '<Cmd>exe "iput "  . v:register<CR>', "Paste Below")
 nmap("<Esc>", "<cmd>nohlsearch<CR>")
 
 _G.Config.leader_group_spec = {
-	{ "<leader>b", group = "+Buffer" },
-	{ "<leader>e", group = "+Explore/Edit" },
-	{ "<leader>g", group = "+Git", mode = { "n", "x" } },
-	{ "<leader>l", group = "+Language", mode = { "n", "x" } },
-	{ "<leader>s", group = "+Session" },
-	{ "<leader>f", group = "+Find" },
-	{ "<leader>t", group = "+Test" },
-	{ "<leader>o", group = "+Other" },
-	{ "<leader>q", group = "+Quickfix" },
-	{ "<leader>z", group = "+Zk" },
+	{ mode = "n", keys = "<leader>b", desc = "+Buffer" },
+	{ mode = "n", keys = "<leader>e", desc = "+Explore/Edit" },
+	{ mode = { "n", "x" }, keys = "<leader>g", desc = "+Git" },
+	{ mode = { "n", "x" }, keys = "<leader>l", desc = "+Language" },
+	{ mode = "n", keys = "<leader>s", desc = "+Session" },
+	{ mode = "n", keys = "<leader>f", desc = "+Find" },
+	{ mode = "n", keys = "<leader>t", desc = "+Test" },
+	{ mode = "n", keys = "<leader>o", desc = "+Other" },
+	{ mode = "n", keys = "<leader>q", desc = "+Quickfix" },
+	{ mode = "n", keys = "<leader>z", desc = "+Zk" },
 }
 
 -- Helpers for a more concise `<Leader>` mappings.

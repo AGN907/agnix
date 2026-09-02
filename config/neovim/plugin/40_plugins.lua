@@ -256,23 +256,6 @@ nixInfo.lze.load({
 			end)
 		end,
 	},
-
-	{
-		"which-key.nvim",
-		auto_enable = true,
-		event = "DeferredUIEnter",
-		after = function()
-			require("which-key").setup({
-				preset = "helix",
-				plugins = {
-					presets = {
-						text_objects = false,
-					},
-				},
-			})
-			require("which-key").add(Config.leader_group_spec)
-		end,
-	},
 	{
 		"zellij-vim",
 		event = "DeferredUIEnter",

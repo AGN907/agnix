@@ -745,4 +745,40 @@ nixInfo.lze.load({
 			statuscolumn.setup()
 		end,
 	},
+	{
+		"mini.clue",
+		after = function()
+			local miniclue = require("mini.clue")
+			miniclue.setup({
+				window = {
+					delay = 300,
+				},
+				clues = {
+					Config.leader_group_spec,
+					miniclue.gen_clues.builtin_completion(),
+					miniclue.gen_clues.g(),
+					miniclue.gen_clues.marks(),
+					miniclue.gen_clues.registers(),
+					miniclue.gen_clues.square_brackets(),
+					miniclue.gen_clues.windows({ submode_resize = true }),
+					miniclue.gen_clues.z(),
+				},
+				triggers = {
+					{ mode = { "n", "x" }, keys = "<Leader>" },
+					{ mode = "n", keys = "\\" },
+					{ mode = { "n", "x" }, keys = "[" },
+					{ mode = { "n", "x" }, keys = "]" },
+					{ mode = "i", keys = "<C-x>" },
+					{ mode = { "n", "x" }, keys = "g" },
+					{ mode = { "n", "x" }, keys = "'" },
+					{ mode = { "n", "x" }, keys = "`" },
+					{ mode = { "n", "x" }, keys = '"' },
+					{ mode = { "i", "c" }, keys = "<C-r>" },
+					{ mode = "n", keys = "<C-w>" },
+					{ mode = { "n", "x" }, keys = "s" },
+					{ mode = { "n", "x" }, keys = "z" },
+				},
+			})
+		end,
+	},
 })
