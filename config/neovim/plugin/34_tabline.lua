@@ -41,7 +41,7 @@ local function get_icon_hl(mini_hl, is_current)
 	-- Create a new highlight group blending the icon fg with the tab bg
 	vim.api.nvim_set_hl(0, custom_hl, {
 		fg = hl_def.fg,
-		bg = is_current and hl("TabLineCurrent").bg or hl("TabLineVisible").bg,
+		bg = is_current and hl("CursorColumn").bg or "NONE",
 	})
 
 	hl_cache[custom_hl] = true
