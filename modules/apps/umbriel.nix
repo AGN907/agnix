@@ -64,8 +64,8 @@
 
               # Windows and workspaces
               "Mod+H" = "window-focus-left";
-              "Mod+J" = "window-focus-or-workspace-up";
-              "Mod+K" = "window-focus-or-workspace-down";
+              "Mod+K" = "window-focus-or-workspace-up";
+              "Mod+J" = "window-focus-or-workspace-down";
               "Mod+L" = "window-focus-right";
 
               "Mod+Shift+H" = "column-move-left";
