@@ -121,7 +121,7 @@ nmap_leader("sw", "<Cmd>lua MiniSessions.write()<CR>", "Write current")
 nmap_leader("sq", "<Cmd>quit<CR>", "Quit")
 
 local input_cmd_terminal =
-	"Snacks.input.input({}, function(cmd) if cmd ~= nil then Snacks.terminal(cmd) end return end)"
+	"local cmd = MiniInput.get({ prompt = 'Command' }) if cmd ~= nil then Snacks.terminal(cmd) end return"
 nmap_leader(".", "<Cmd>lua Snacks.terminal()<CR>", "Open terminal")
 nmap_leader(",", "<Cmd>lua " .. input_cmd_terminal .. "<CR>", "Run command in terminal")
 

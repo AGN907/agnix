@@ -5,7 +5,6 @@ nixInfo.lze.load({
 		after = function()
 			require("snacks").setup({
 				terminal = {},
-				input = {},
 				rename = {},
 				lazygit = {
 					configure = false,
