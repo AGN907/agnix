@@ -208,7 +208,9 @@ nixInfo.lze.load({
 		event = { "BufReadPre", "BufNewFile" },
 		after = function()
 			local indentscope = require("mini.indentscope")
-			indentscope.setup()
+			indentscope.setup({
+				options = { try_as_border = true },
+			})
 		end,
 	},
 	{
