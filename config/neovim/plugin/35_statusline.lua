@@ -19,9 +19,9 @@ local set_hl_groups = function()
 		DiffAdded = { link = "Added" },
 		DiffChanged = { link = "Changed" },
 		DiffRemoved = { link = "Removed" },
-    FileDir = { fg = hl("Directory").fg, bg = "NONE" },
-    FileName = { fg = hl("Title").fg, bg = "NONE", bold = true },
-    FileReadOnly = { fg = hl("ErrorMsg").fg, bg = "NONE" },
+		FileDir = { fg = hl("Directory").fg, bg = "NONE" },
+		FileName = { fg = hl("Title").fg, bg = "NONE", bold = true },
+		FileReadOnly = { fg = hl("ErrorMsg").fg, bg = "NONE" },
 		LSP = { fg = hl("SpecialKey").fg, bg = "NONE" },
 		Fmt = { fg = hl("SpecialKey").fg, bg = "NONE" },
 		Position = { fg = hl("SpecialKey").fg, bg = "NONE", bold = true },
@@ -97,13 +97,10 @@ local file_name_component = function()
 		return "%t"
 	end
 
-	local icon, icon_hl = require("mini.icons").get("extension", filename)
-
 	return table.concat({
 		"%#StBase#",
 		"%#StFileDir# " .. dir .. "/",
 		"%#StFileName#" .. filename,
-		"%#St" .. icon_hl .. "# " .. icon .. " ",
 		vim.bo.readonly and "%#StFileReadOnly#  " or "",
 	})
 end
@@ -117,9 +114,9 @@ local diff_component = function()
 	local added, changed, removed = summary.add or 0, summary.change or 0, summary.delete or 0
 
 	return table.concat({
-		"%#StDiffAdded# " .. (added > 0 and "+" .. added or "") .. " ",
-		"%#StDiffChanged#" .. (changed > 0 and "~" .. changed or "") .. " ",
-		"%#StDiffRemoved#" .. (removed > 0 and "-" .. removed or "") .. " ",
+		added > 0 and "%#StDiffAdded# +" .. added or "  ",
+		changed > 0 and "%#StDiffChanged# ~" .. changed or "  ",
+		removed > 0 and "%#StDiffRemoved# -" .. removed or "  ",
 		"%#StBase#",
 	})
 end
