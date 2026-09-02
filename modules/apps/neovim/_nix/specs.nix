@@ -108,7 +108,6 @@
       mini-bufremove
       mini-files
       mini-sessions
-      mini-tabline
       fzf-lua
       tiny-inline-diagnostic-nvim
       config.nvim-lib.neovimPlugins.tiny-code-action

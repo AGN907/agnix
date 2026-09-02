@@ -105,6 +105,13 @@ nixInfo.lze.load({
 		end,
 	},
 	{
+		"trigger_tabline",
+		load = function()
+			vim.o.showtabline = 2
+			vim.o.tabline = "%!v:lua.Tabline()"
+		end,
+	},
+	{
 		"trigger_statusline",
 		load = function()
 			vim.opt.statusline =
